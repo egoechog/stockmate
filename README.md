@@ -1,9 +1,17 @@
 # stockmate
-a pilot python tool for analyzing stock data.
+a pilot python3 tool for analyzing stock data.
+
 ## Major dependent packages:
-  * tushare
-  used for pulling stock data in pandas DataFrame style.
-  * matplotlib
-  used for analyzing and rendering stock curves;
-  * tkinter
-  used for building the GUI
+  * tushare:
+    pull stock data in pandas DataFrame style
+
+  * matpotlib:
+    analyze and rendering stock curves
+
+  * tkinter:
+    used for building the GUI
+
+## How can I run this tool?
+```bash
+python main_gui.py
+```

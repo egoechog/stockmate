@@ -1,6 +1,6 @@
 # stockmate
 a pilot python tool for analyzing stock data.
-# Major dependent packages:
+## Major dependent packages:
   * tushare
     used for pulling stock data in pandas DataFrame style.
   * matplotlib

@@ -12,7 +12,7 @@
 from datetime import datetime
 import tushare as ts
 
-def getYearlyCloseData(stockNum):
+def get_yearly_close_data(stocknum):
     """
     股票收盘价走势曲线Over a year
 
@@ -22,11 +22,11 @@ def getYearlyCloseData(stockNum):
     start = datetime(end.year-1,end.month,end.day)
     end = str(end)[0:10]
     start = str(start)[0:10]
-    stock = ts.get_hist_data(stockNum,start,end)#选取一支股票
+    stock = ts.get_hist_data(stocknum,start,end)#选取一支股票
     return stock['close']
 
 
-def getMovingAverageData(stockNum):
+def get_moving_average(stocknum):
     """
     显示股票5日均线、10日均线以及20日均线(Moving average)
 
@@ -36,11 +36,11 @@ def getMovingAverageData(stockNum):
     start = datetime(end.year-1,end.month,end.day)
     end = str(end)[0:10]
     start = str(start)[0:10]
-    stock = ts.get_hist_data(stockNum,start,end)#选取一支股票
+    stock = ts.get_hist_data(stocknum,start,end)#选取一支股票
     # difference
     return stock[['close','ma5','ma10','ma20']]
 
-def getDailyReturnData(stockNum):
+def get_daily_return(stockNum):
     """
     显示股票每日涨跌幅度(Daily return)
 

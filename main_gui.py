@@ -9,14 +9,14 @@ import stockdata as sd
 
 def draw_graph(stockNum):
     """
-    Display stock curve in the graph
+    Display yearly close curve in the graph
     """
 
     # clear the curent axis(instead of the parent figure) before drawing new data
     graph.figure.ax1.cla()
     try:
         print("loading data for stock:{0}".format(stockNum))
-        dataframe = sd.getYearlyCloseData(stockNum)
+        dataframe = sd.get_yearly_close_data(stockNum)
         # plot into the embedded axis instead of popping up a standalone dialog
         # dataFrame.show()
         dataframe.plot(legend=True, ax=graph.figure.ax1, title = "YearlyCloseCurve:{0}".\

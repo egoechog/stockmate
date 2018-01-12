@@ -40,7 +40,7 @@ def get_moving_average(stocknum):
     # difference
     return stock[['close','ma5','ma10','ma20']]
 
-def get_daily_return(stockNum):
+def get_daily_return(stocknum):
     """
     显示股票每日涨跌幅度(Daily return)
 
@@ -50,7 +50,7 @@ def get_daily_return(stockNum):
     start = datetime(end.year-1,end.month,end.day)
     end = str(end)[0:10]
     start = str(start)[0:10]
-    stock = ts.get_hist_data(stockNum,start,end)#选取一支股票
+    stock = ts.get_hist_data(stocknum,start,end)#选取一支股票
 
     stock['Daily Return'] = stock['close'].pct_change()
     return stock['Daily Return']

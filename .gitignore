@@ -4,3 +4,4 @@ main_gui.py~
 __pycache__/stockdata.cpython-36.pyc
 .gitignore
 .vscode/.ropeproject/objectdb
+__pycache__/main_gui.cpython-36.pyc

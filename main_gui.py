@@ -2,10 +2,12 @@
     This the main entry of the GUI layer for StockMate application
 """
 import tkinter as tk
+from tkinter import ttk
 import matplotlib
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import stockdata as sd
+import platform
 
 def draw_graph(stockNum):
     """
@@ -40,9 +42,9 @@ if __name__ == "__main__":
     # The tk.Grid.grid(instPath,**options) function is equal to instPath.grid(**options)
 
     # First create the toolbar and graph frames on root
-    toolbar = tk.Frame(root, height=30)
+    toolbar = ttk.Frame(root, height=30)
     toolbar.grid(row = 0, sticky=tk.N+tk.E+tk.W)
-    graph=tk.Frame(root, bg="blue")
+    graph=ttk.Frame(root)
     # make graph frame fit the vertical resizing
     graph.grid(row = 1, sticky=tk.N+tk.S+tk.E+tk.W)
     root.rowconfigure(1, weight=1)
@@ -50,9 +52,9 @@ if __name__ == "__main__":
     root.columnconfigure(0, weight=1)
     
     # Then create label and buttons on toolbar
-    label = tk.Label(toolbar,text='请输入股票代码：')
+    label = ttk.Label(toolbar,text='请输入股票代码：')
     label.grid(row=0, column=0, sticky=tk.W)
-    inputEntry = tk.Entry(toolbar)
+    inputEntry = ttk.Entry(toolbar)
     inputEntry.grid(row=0, column=1,sticky=tk.W+tk.E)
     # make inputEntry fit the horizontal resizing
     toolbar.columnconfigure(1, weight=1)
@@ -60,7 +62,7 @@ if __name__ == "__main__":
     # use lamda to wrap the callback method with arguments, otherwise the callback will be evaluated 
     # immediately and its return value will be set to the command attribute, in a result button click
     # would not behave.
-    btn1 = tk.Button(toolbar,text='收盘趋势线', command = lambda:draw_graph(inputEntry.get()))
+    btn1 = ttk.Button(toolbar,text='收盘趋势线', command = lambda:draw_graph(inputEntry.get()))
     btn1.grid(row=0, column=2, sticky=tk.E)
     
     # create canvas on graph for displaying the figure
@@ -74,6 +76,9 @@ if __name__ == "__main__":
     graph.canvas.get_tk_widget().grid(row = 0, column = 0, sticky = tk.W+tk.E+tk.N+tk.S)
     graph.rowconfigure(0, weight = 1)
     graph.columnconfigure(0, weight = 1)
-    
+
+    style = ttk.Style()
+    theme = "xpnative" if platform.os.name == "nt" else "alt"
+    style.theme_use(theme)
     # start event pump
     root.mainloop()
